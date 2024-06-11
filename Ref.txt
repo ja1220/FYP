@@ -1,0 +1,35 @@
+{SET Single QD Transistor}
+{Coulomb Diamondps - Reference File}
+
+def t1 1aF, 10MegOhm
+put t1 nd, n1
+
+def t2 1aF, 10MegOhm
+put t2 n1, ns
+
+def cg 0.1aF
+put cg n1, ng
+
+def vdp
+put vdp ns, gnd
+
+def vdn
+put vdn nd, gnd
+
+def vg
+put vg ng, gnd
+
+for v1 = -0.1V to 0.105V step 0.0025V
+for v2 = -4V to 4V step 0.16V
+	add vdp v1, 0.1us
+	add vdn -v1, 0.1us
+	add vg v2, 0.1us
+next
+next
+
+plot v[nd], v[ns], v[ng], c[nd]
+plotfile Refout.txt
+Temp = 10
+do MonteCarlo
+clear
+close
