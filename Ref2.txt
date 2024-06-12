@@ -1,0 +1,46 @@
+{SET Double QD Transistor}
+{Coulomb Diamonds - Reference File}
+
+def t1 1aF, 10MegOhm
+put t1 nd, n1
+
+def t2 10aF, 10MegOhm
+put t2 n1, n2
+
+def t3 1aF, 10MegOhm
+put t3 n2, ns
+
+def cg1 0.1aF
+put cg1 n1, ng1
+
+def cg2 0.1aF
+put cg2 n2, ng2
+
+def vdp
+put vdp nd, gnd
+
+def vdn
+put vdn ns, gnd
+
+def vg1
+put vg1 ng1, gnd
+
+def vg2
+put vg2 ng2, gnd
+
+v1 = 0.01V  
+for v2 = -2V to 2V step 0.08V
+for v3 = -2V to 2V step 0.08V
+	add vdp v1, 0.1us
+	add vdn -v1, 0.1us
+	add vg1 v2, 0.1us
+	add vg2 v3, 0.1us
+next
+next
+
+plot v[nd], v[ns], v[ng1], v[ng2],  c[nd]
+plotfile Refout13.txt
+Temp = 1
+do
+clear
+close
