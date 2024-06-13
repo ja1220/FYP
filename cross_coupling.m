@@ -28,10 +28,6 @@ plot(x_range, -x_range, 'b', 'LineWidth', 1.5); % Linear energy level
 plot(x_range, epsilon_plus, 'r', 'LineWidth', 1.5); % Curved energy level
 plot(x_range, epsilon_minus, 'r', 'LineWidth', 1.5); % Curved energy level
 
-% Dashed lines for coupling
-plot([-xy, xy], [cp, cp], 'k--');
-plot([-xy, xy], [-cp, -cp], 'k--');
-
 
 hold off;
 xlabel('Vg1/eV');
