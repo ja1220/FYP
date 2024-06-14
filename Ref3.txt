@@ -1,0 +1,26 @@
+{single electron trap}
+
+def t1 1aF, 10MegOhm
+put t1 nd, n1
+
+def t2 1aF, 1MegOhm
+put t2 n1, ns
+
+def vdp
+put vdp ns, gnd
+
+def vdn
+put vdn nd, gnd
+
+
+for v1 = -1V to 1.05V step 0.0025V
+	add vdp v1, 0.1us
+	add vdn -v1, 0.1us
+next
+
+plot v[nd], v[ns], c[nd]
+plotfile Refout4.txt
+Temp = 4.2
+do MonteCarlo
+clear
+close
