@@ -120,3 +120,16 @@ else
     yData = reshape(yData, [reshapeRowNo, reshapeColNo]);
     zData = reshape(zData, [reshapeRowNo, reshapeColNo]);
 end
+
+%%
+% plotting coulomb diamonds
+figure;
+s0=surf(xData,yData,zData);
+s0.LineStyle='none';
+view(2);
+colorbar;
+% plotbrowser('on');
+propertyeditor('on');
+xlabel('Vg2/V');
+ylabel('Vg3/V'); 
+zlabel('Ids/A');
